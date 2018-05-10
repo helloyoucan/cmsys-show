@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import {getPage} from '../../services/dataDownload';
 import {Pagination, message, Spin, List, Avatar, Button} from 'antd';
+import './index.css'
+import moment from 'moment'
 export default class DataDownload extends PureComponent {
     state = {
         isLoading: true,
@@ -62,34 +64,23 @@ export default class DataDownload extends PureComponent {
         ) : null;
         return (
 
-            <div>
+            <div className="dataDownLoad">
                 <List
                     loading={isLoading}
                     itemLayout="horizontal"
                     loadMore={loadMore}
                     dataSource={list}
                     renderItem={(item, index) => ( <li key={index}>
-                        <p>{item.name} <a href={item.path}>下载</a></p>
+                        <p className="dload-item"><a href={item.path}>{item.name}</a>
+                            <span className="dload-time right">
+                        {item.lastupdTime ?
+                            moment(item.lastupdTime).format('YYYY-MM-DD')
+                            : moment(item.insertTime).format('YYYY-MM-DD')
+                        }
+                        </span>
+                        </p>
                     </li>)}
                 />
-                {/*{
-                 isLoading ?
-                 (<Spin/>) :
-                 (<ul>
-                 {list.map((item, index) => {
-                 return ( <li key={index}>
-                 <p>{item.name}</p>
-                 <a href={item.path}>下载</a>
-                 </li>)
-                 })}
-                 </ul>
-                 )
-                 }
-                 <Pagination
-                 showSizeChanger
-                 onShowSizeChange={this.onShowSizeChange.bind(this)}
-                 defaultCurrent={pagination.pageNo}
-                 total={pagination.total}/>*/}
             </div>
         )
     }

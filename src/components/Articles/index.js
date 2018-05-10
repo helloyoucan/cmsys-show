@@ -3,6 +3,8 @@ import {message, Spin, Pagination, Button, Tag} from 'antd';
 import {getArticleTypes, getArticlesForType, getArticlesForAssId} from '../../services/home';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
+import './index.css'
+import titleBg from '../../assets/club-article-title-bg.png'
 export default class Articles extends Component {
     state = {
         isLoading: true,
@@ -93,82 +95,88 @@ export default class Articles extends Component {
             articleTypeObj[item.pmname] = item.pmvalue
         })
         return (
-            <div>
+            <div className="club-artile">
+                <div className="ca-title" style={{backgroundImage: 'url(' + titleBg + ')'}}>社团推文</div>
+                {/*{
+                 assId ? '' : (
+                 <div className="artile-types">
+                 <Tag
+                 onClick={this.handelClickArticleType.bind(this, '')}
+                 color={tagPmname == '' ? '#108ee9' : ''}>
+                 全部
+                 </Tag>
+                 {
+                 articleType.map((item, index) => (
+                 <Tag
+                 key={index}
+                 color={tagPmname == item.pmname ? '#108ee9' : ''}
+                 onClick={this.handelClickArticleType.bind(this, item.pmname)}>
+                 {item.pmvalue}
+                 </Tag>
+                 ))
+                 }
+                 </div>
+                 )
+                 }*/}
                 {
-                    assId ? '' : (
-                        <div>
-                            <p>推文类型</p>
-                            <Tag
-                                onClick={this.handelClickArticleType.bind(this, '')}
-                                color={tagPmname == '' ? '#108ee9' : ''}>
-                                全部
-                            </Tag>
+                    isLoading ? (<div className="span-loading"><Spin/></div>) : (
+                        <ul className="articles-list">
                             {
-                                articleType.map((item, index) => (
-                                    <Tag
-                                        key={index}
-                                        color={tagPmname == item.pmname ? '#108ee9' : ''}
-                                        onClick={this.handelClickArticleType.bind(this, item.pmname)}>
-                                        {item.pmvalue}
-                                    </Tag>
-                                ))
+                                list.map((item, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <div className="new-art-item">
+                                                <Link
+                                                    className="new-art-title"
+                                                    target='_blank'
+                                                    to={{
+                                                        data: {
+                                                            id: item.id
+                                                        },
+                                                        pathname: '/article/details/' + item.id,
+                                                    }
+                                                    }> {item.title}
+                                                </Link>
+                                                <Tag color="blue">{articleTypeObj[item.type]}</Tag>
+                                                <span className="new-art-time">
+                                                        {item.lastupdTime ?
+                                                            moment(item.lastupdTime).format('YYYY-MM-DD HH:mm')
+                                                            : moment(item.insertTime).format('YYYY-MM-DD HH:mm')
+                                                        }
+                                               </span>
+                                            </div>
+                                            <div className="new-art-content">
+                                                内容预览：{ item.content
+                                                .replace(/<[^>]+>/g, "")
+                                                .replace(/&[a-zA-Z]{1,10};/, '')
+                                                .slice(0, 100)
+                                            }...
+                                            </div>
+                                        </li>)
+                                })
                             }
-                        </div>
+                        </ul>
                     )
                 }
-                <div>
-                    <p>推文列表</p>
+                <div className="page-action">
                     <Button
+                        size={"large"}
                         onClick={this.handelChangePageNo.bind(this, -1)}
                         disabled={pagination.currentPage < 2}
                         type="primary"
                         icon="left"
                         shape="circle"
                         loading={isLoading}/>
+                    <Button type="dashed">共{pagination.total}条</Button>
                     <Button
+                        size={"large"}
                         onClick={this.handelChangePageNo.bind(this, 1)}
                         disabled={pagination.pageSize * pagination.currentPage >= pagination.total}
                         type="primary"
                         icon="right"
                         shape="circle"
                         loading={isLoading}/>
-                    {
-                        isLoading ? <Spin/> : (
-                            <ul>
-                                {
-                                    list.map((item, index) => {
-                                        return (
-                                            <li key={index}>
-                                                <Link
-                                                    target='_blank'
-                                                    to={{
-                                                        data: {
-                                                            id: item.id
-                                                        },
-                                                        pathname: '/article/' + item.id,
-                                                    }
-                                                    }> {item.title}
-                                                </Link>
-                                                {item.lastupdTime ?
-                                                    moment(item.lastupdTime).format('YYYY-MM-DD HH:mm')
-                                                    : moment(item.insertTime).format('YYYY-MM-DD HH:mm')
-                                                }
-                                                <p>
-                                                    {articleTypeObj[item.type]}
-                                                </p>
-                                                <div>
-                                                    { item.content
-                                                        .replace(/<[^>]+>/g, "")
-                                                        .replace(/&[a-zA-Z]{1,10};/, '')
-                                                        .slice(0, 200)
-                                                    }
-                                                </div>
-                                            </li>)
-                                    })
-                                }
-                            </ul>
-                        )
-                    }
+
                 </div>
             </div>
         )

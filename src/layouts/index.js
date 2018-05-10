@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import logo from '../assets/logo.png';
+import bg from '../assets/home-bg.jpg';
 import {Link} from 'react-router-dom'
 import {Layout, Menu, Icon, Row, Col} from 'antd';
 import './index.css';
@@ -17,42 +18,35 @@ export default class BaseLayout extends Component {
 
     render() {
         return (
-            <Layout>
-                <Header style={{position: 'fixed', width: '100%', zIndex: 999}}>
-                    <Col xs={0} sm={0} md={1} lg={1} xl={4}></Col>
-                    <Col xs={24} sm={24} md={22} lg={22} xl={16}>
+            <div>
+                <header>
+                    <div className="logo-content">
                         <Link to="/">
-                            <img src={logo} alt="" className="logo"/>
+                            <img src={logo} alt="LOGO" className="nav-logo"/>
                         </Link>
-
+                        广州商学院社团文化展示网站
+                    </div>
+                    <nav>
                         <Menu
-                            theme="dark"
                             mode="horizontal"
                             onClick={this.handleClick}
                             selectedKeys={[this.state.current]}
                             style={{lineHeight: '64px'}}
                         >
                             <Menu.Item key="1"><Link to="/">首页</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/dataDownload">资料下载</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to="/articles">推文</Link></Menu.Item>
+                            <Menu.Item key="3"><Link to="/clubs">社团</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to="/dataDownload">资料下载</Link></Menu.Item>
                         </Menu>
-                    </Col>
-                    <Col xs={0} sm={0} md={1} lg={1} xl={4}></Col>
-                </Header>
-                <Row>
-                    <Col xs={0} sm={0} md={1} lg={1} xl={4}></Col>
-                    <Col xs={24} sm={24} md={22} lg={22} xl={16}>
-                        <Content style={{padding: '16px 50px 0', marginTop: 64}}>
-                            <div style={{background: '#fff', padding: 24, minHeight: 380}}>
-                                {this.props.children}
-                            </div>
-                        </Content>
-                    </Col>
-                    <Col xs={0} sm={0} md={1} lg={1} xl={4}></Col>
-                </Row>
+                    </nav>
+                </header>
+                <div style={{background: '#fff', minHeight: 380}}>
+                    {this.props.children}
+                </div>
                 <Footer style={{textAlign: 'center'}}>
                     Copyright <Icon type="copyright"/> 2018 14商业软件1班
                 </Footer>
-            </Layout>
+            </div>
         );
     }
 }

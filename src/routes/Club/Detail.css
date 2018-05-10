@@ -1,0 +1,27 @@
+.club-content {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    min-height: 500px;
+    position: relative;
+}
+
+.club-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .4);
+    padding: 30px 200px;
+    color: #fff;
+}
+
+.ci-name {
+    font-size: 28px;
+}
+
+.ci-name ~ p {
+    margin: 10px 0;
+    font-size: 18px;
+}

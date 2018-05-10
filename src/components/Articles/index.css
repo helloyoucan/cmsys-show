@@ -1,0 +1,58 @@
+.club-artile {
+    padding: 50px 0;
+}
+
+.ca-title {
+    width: 200px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    height: 100px;
+    background-size: 100%;
+    text-align: center;
+    padding-top: 57px;
+    font-size: 18px;
+
+}
+
+.club-artile {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*
+.artile {
+
+}
+
+.artile .title {
+    font-size: 18px;
+    margin: 20px 0 10px;
+}
+
+.artile-types {
+}
+
+.article-list {
+    margin: 10px 0;
+}
+
+.article-list li + li {
+    padding: 20px 0 0;
+}
+
+.art-title {
+    font-size: 18px;
+}
+
+.art-info {
+    margin: 5px 0;
+}
+
+.art-time {
+    display: inline-block;
+    margin: 0 10px 0;
+}
+
+.art-content {
+    font-size: 16px;
+}*/

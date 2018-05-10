@@ -1,5 +1,16 @@
-.logo {
+.logo-content {
+    line-height: 60px;
+    font-size: 28px;
+}
+
+.nav-logo {
     height: 60px;
     float: left;
     margin-right: 10px;
 }
+
+#root {
+    width: 960px;
+    margin: 0 auto;
+}
+

@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {message, Spin} from 'antd';
-import logo from '../../assets/logo.png';
+import bg from '../../assets/home-bg-1.png';
+import depmTitleBg from '../../assets/depm-title-bg.png';
+import depmNameTitleBg from '../../assets/depm-name-title-bg.png';
+import './ClubUnion.css'
+
 import {getClubUnionInfo, getClubUnionDepartments} from '../../services/home';
 export default class ClubUnion extends Component {
     state = {
@@ -42,19 +46,30 @@ export default class ClubUnion extends Component {
         const {clubUnionInfo, departments} = this.state
         return (
             <div>
-                <div>
-                    <img src={logo} alt="" className="logo"/>
-                    <p> {clubUnionInfo.remarks}</p>
-                    <p> {clubUnionInfo.pmvalue}</p>
+                <div style={{backgroundImage: 'url(' + bg + ')'}} className="clubUnion fixclear">
+                    <div className="cu-content">
+                        <div className="title">
+                            社团联合会
+                        </div>
+                        <div className="introduce">
+                            {clubUnionInfo.remarks}：
+                            {clubUnionInfo.pmvalue}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <p>社联部门</p>
-                    <ul>
+                <div className="departments">
+                    <div className="title"
+                         style={{backgroundImage: 'url(' + depmTitleBg + ')'}}>社联部门
+                    </div>
+                    <ul className="depms-list fixclear">
                         {
                             departments.map((item, index) => {
                                 return (<li key={index}>
-                                    <p>{item.name}</p>
-                                    <p>{item.info}</p>
+                                    <div className="depm-name" style={{backgroundImage: 'url(' + depmNameTitleBg + ')'}}>
+                                        {item.name}
+                                    </div>
+
+                                    <p className="depm-describe">{item.info}</p>
                                 </li>)
                             })
                         }

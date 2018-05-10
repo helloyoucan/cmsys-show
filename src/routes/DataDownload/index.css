@@ -1,0 +1,10 @@
+.dataDownLoad {
+    width: 640px;
+    margin: 30px auto;
+    min-height: 500px;
+}
+
+.dload-item {
+    margin: 10px 0;
+    font-size: 18px;
+}

@@ -1,0 +1,67 @@
+.club {
+    margin: 0 0 30px;
+}
+
+.clubs-describe-content {
+    background-repeat: no-repeat;
+    height: 300px;
+    background-size: 100%;
+    background-position: 0 -80px;
+
+}
+
+.clubs-describe {
+    font-size: 18px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 100px 200px;
+    color: #555;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.club .title {
+    font-size: 18px;
+    margin: 40px 0 10px;
+}
+
+.club-list {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.club-list li + li {
+    margin-top: 20px;
+}
+
+.page-action {
+    text-align: center;
+}
+
+.club-type {
+    text-align: center;
+    padding: 40px 0 10px;
+}
+
+.club-name {
+    font-size: 20px;
+    height: 55px;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    background-position-y: 10px;
+    margin: 0 auto;
+}
+
+.club-profile {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.span-loading {
+    width: 100%;
+    min-height: 30px;
+    height: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
