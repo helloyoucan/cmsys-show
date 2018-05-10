@@ -1,0 +1,16 @@
+@charset "UTF-8";
+body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,form,input,textarea,p,th,td{margin:0;padding:0;}
+caption,th{text-align:left;}
+img{border:0;}
+ul{display:block;}
+li{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+body{font-family:"Microsoft YaHei UI","宋体","新宋体";font-size:12px;color:#000;}
+/*a:link, a:visited{text-decoration:none;color: #000000;}*/
+/*a:hover{color:red}*/
+/*a:hover{text-decoration:none;}*/
+input,button,select,textarea{outline: none;font-family: "Microsoft YaHei UI"}
+/*清除浮动*/
+.fixclear{*zoom:1;}
+.fixclear:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.ellipsis{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
