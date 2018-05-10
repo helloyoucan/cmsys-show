@@ -25,9 +25,11 @@ export default class Articles extends Component {
     componentDidMount() {
         getArticleTypes({})
             .then(res => {
-                this.setState({
-                    articleType: res.data
-                })
+                if (res.ret) {
+                    this.setState({
+                        articleType: res.data
+                    })
+                }
             }).catch(res => {
             message.error('获取数据失败')
         })
@@ -47,10 +49,12 @@ export default class Articles extends Component {
                 ...parmas
             })
                 .then(res => {
-                    this.setState({
-                        isLoading: false,
-                        articles: res.data
-                    })
+                    if (res.ret) {
+                        this.setState({
+                            isLoading: false,
+                            articles: res.data
+                        })
+                    }
                 }).catch(res => {
                 message.error('获取数据失败')
             })
@@ -62,10 +66,12 @@ export default class Articles extends Component {
                 ...parmas
             })
                 .then(res => {
-                    this.setState({
-                        isLoading: false,
-                        articles: res.data
-                    })
+                    if (res.ret) {
+                        this.setState({
+                            isLoading: false,
+                            articles: res.data
+                        })
+                    }
                 }).catch(res => {
                 message.error('获取数据失败')
             })
@@ -120,7 +126,7 @@ export default class Articles extends Component {
                 </div>
                 <div className="right">
                     {
-                        isLoading ? <Spin/> : (
+                        isLoading ? (<div className="span-loading"><Spin/></div>) : (
                             <ul className="articles-list">
                                 {
                                     list.map((item, index) => {

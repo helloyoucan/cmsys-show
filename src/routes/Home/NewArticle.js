@@ -25,9 +25,11 @@ export default class NewArticle extends Component {
     componentDidMount() {
         getArticleTypes({})
             .then(res => {
-                this.setState({
-                    articleType: res.data
-                })
+                if (res.ret) {
+                    this.setState({
+                        articleType: res.data
+                    })
+                }
             }).catch(res => {
             message.error('获取数据失败')
         })
@@ -47,10 +49,12 @@ export default class NewArticle extends Component {
                 ...parmas
             })
                 .then(res => {
-                    this.setState({
-                        isLoading: false,
-                        articles: res.data
-                    })
+                    if (res.ret) {
+                        this.setState({
+                            isLoading: false,
+                            articles: res.data
+                        })
+                    }
                 }).catch(res => {
                 message.error('获取数据失败')
             })
@@ -62,10 +66,12 @@ export default class NewArticle extends Component {
                 ...parmas
             })
                 .then(res => {
-                    this.setState({
-                        isLoading: false,
-                        articles: res.data
-                    })
+                    if (res.ret) {
+                        this.setState({
+                            isLoading: false,
+                            articles: res.data
+                        })
+                    }
                 }).catch(res => {
                 message.error('获取数据失败')
             })
@@ -103,10 +109,10 @@ export default class NewArticle extends Component {
                 <div className="right">
                     <div className="title" style={{backgroundImage: 'url(' + titleBg + ')'}}>社团推文</div>
                     {
-                        isLoading ? <Spin/> : (
+                        isLoading ? (<div className="span-isLoading"><Spin/></div>) : (
                             <ul className="new-article-list">
                                 {
-                                    list.map((item, index) => {
+                                    list.length > 0 && list.map((item, index) => {
                                         return (
                                             <li key={index}>
                                                 <div className="new-art-item">

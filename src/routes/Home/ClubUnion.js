@@ -32,11 +32,12 @@ export default class ClubUnion extends Component {
     getData() {
         getClubUnionDepartments({})
             .then(res => {
-                console.log(res)
-                this.setState({
-                    isLoading: false,
-                    departments: res.data
-                })
+                if (res.ret) {
+                    this.setState({
+                        isLoading: false,
+                        departments: res.data
+                    })
+                }
             }).catch(res => {
             message.error('获取数据失败')
         })
@@ -63,9 +64,10 @@ export default class ClubUnion extends Component {
                     </div>
                     <ul className="depms-list fixclear">
                         {
-                            departments.map((item, index) => {
+                            departments.length && departments.map((item, index) => {
                                 return (<li key={index}>
-                                    <div className="depm-name" style={{backgroundImage: 'url(' + depmNameTitleBg + ')'}}>
+                                    <div className="depm-name"
+                                         style={{backgroundImage: 'url(' + depmNameTitleBg + ')'}}>
                                         {item.name}
                                     </div>
 

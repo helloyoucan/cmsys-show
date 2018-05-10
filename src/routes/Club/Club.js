@@ -24,9 +24,11 @@ export default class Club extends Component {
     componentDidMount() {
         getClubTypes({})
             .then(res => {
-                this.setState({
-                    clubTypes: res.data
-                })
+                if (res.ret) {
+                    this.setState({
+                        clubTypes: res.data
+                    })
+                }
             }).catch(res => {
             message.error('获取数据失败')
         })
@@ -44,10 +46,12 @@ export default class Club extends Component {
             ...params
         })
             .then(res => {
-                this.setState({
-                    isLoading: false,
-                    clubs: res.data
-                })
+                if (res.ret) {
+                    this.setState({
+                        isLoading: false,
+                        clubs: res.data
+                    })
+                }
             }).catch(res => {
             message.error('获取数据失败')
         })
