@@ -123,7 +123,7 @@ export default class NewArticle extends Component {
                                                             data: {
                                                                 id: item.id
                                                             },
-                                                            pathname: '/article/' + item.id,
+                                                            pathname: '/article/details/' + item.id,
                                                         }
                                                         }> {item.title}
                                                     </Link>
